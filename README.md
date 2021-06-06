@@ -33,13 +33,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## project id config
+## Environmental variable
 
 ```javascript
-// next.config.js
-module.exports = {
-  env: {
-    projectId: 'your sanity project id',
-  },
-}
+// .env.local
+SANITY_PROJECT_ID=YourSanityProjecId
 ```

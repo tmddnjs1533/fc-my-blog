@@ -2,12 +2,14 @@ import sanityClient from "@sanity/client";
 
 export default class SanityService {
   _client = sanityClient({
-    dataset: 'production',
-    projectId: process.env.projectId,
-    useCdn : process.env.NODE_ENV === "production"
-  })
+    dataset: "production",
+    projectId: process.env.SANITY_PROJECT_ID,
+    useCdn: process.env.NODE_ENV === "production",
+  });
   async getHome() {
-   return await this._client.fetch(`*[_type == 'home'][0]{'mainPostUrl': mainPost -> slug.current}`)
+    return await this._client.fetch(
+      `*[_type == 'home'][0]{'mainPostUrl': mainPost -> slug.current}`
+    );
   }
   async getPosts() {
     return await this._client.fetch(`*[_type == 'post']{
@@ -39,6 +41,6 @@ export default class SanityService {
     title,
     'slug': slug.current
   }
-}`)
+}`);
   }
 }
